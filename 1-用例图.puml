@@ -1,0 +1,24 @@
+@startuml
+left to right direction
+actor "Regular User" as user
+actor "Administrator" as admin
+actor "Super Administrator" as super_admin
+
+rectangle "User Management" {
+  user --> (Register)
+  user --> (Login)
+  user --> (View User List)
+  user --> (Maintain Personal Information)
+  admin --> (User Maintenance)
+  super_admin --> (User Maintenance)
+}
+
+rectangle "Role Management" {
+  admin --> (Role Maintenance)
+  super_admin --> (Role Maintenance)
+}
+
+rectangle "Menu Management" {
+  super_admin --> (Menu Maintenance)
+}
+@enduml

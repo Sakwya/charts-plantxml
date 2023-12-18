@@ -1,0 +1,64 @@
+@startuml
+package "sakwya.Jwork" {
+    class JworkApplication
+    class CorsConfig
+    class JacksonConfig
+    class ShiroConfig
+
+    package "controller" {
+        class LoginController
+        class MenuController
+        class RoleController
+        class UserController
+    }
+
+    package "entity" {
+        class JsonResult
+        class Menu
+        class Role
+        class RoleMenu
+        class User
+        class UserRole
+    }
+
+    package "mapper" {
+        class MenuMapper
+        class RoleMapper
+        class RoleMenuMapper
+        class UserMapper
+        class UserRoleMapper
+    }
+
+    package "realm" {
+        class Realm
+    }
+
+    package "service" {
+        class MenuService
+        class RoleService
+        class UserService
+    }
+
+    JworkApplication --> CorsConfig
+    JworkApplication --> JacksonConfig
+    JworkApplication --> ShiroConfig
+
+    LoginController --> UserService
+    MenuController --> MenuService
+    RoleController --> RoleService
+    UserController --> UserService
+
+    Role --> RoleMenu
+    User --> UserRole
+
+    MenuService --> MenuMapper
+    RoleService --> RoleMapper
+    RoleService --> RoleMenuMapper
+    UserService --> UserMapper
+    UserService --> UserRoleMapper
+
+    Realm --> UserMapper
+    Realm --> UserRoleMapper
+}
+
+@enduml

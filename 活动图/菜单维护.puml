@@ -1,0 +1,34 @@
+@startuml
+start
+:Enter Menu Details;
+if (Validate Menu Details) then (valid)
+  :Create Menu;
+else (invalid)
+  :Show Error Message;
+  stop
+endif
+if (SuperAdmin selects "Delete Menu") then
+  :Select Menu to Delete;
+  :Verify Menu Deletion;
+  if (Menu exists) then (yes)
+    :Delete Menu;
+  else (no)
+    :Show Error Message;
+  endif
+else if (SuperAdmin selects "Modify Menu") then
+  :Select Menu to Modify;
+  :Modify Menu Details;
+else if (SuperAdmin selects "View Menu") then
+  :Select Menu to View;
+  :Retrieve Menu Details;
+  :Display Menu Details;
+else if (SuperAdmin selects "Add Menu") then
+  :Enter Menu Details;
+  if (Validate Menu Details) then (valid)
+    :Create Menu;
+  else (invalid)
+    :Show Error Message;
+  endif
+endif
+stop
+@enduml

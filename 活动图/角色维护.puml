@@ -1,0 +1,51 @@
+@startuml
+start
+:Enter Role Details;
+if (Validate Role Details) then (valid)
+  :Create Role;
+else (invalid)
+  :Show Error Message;
+  stop
+endif
+if (Admin selects "Delete Role") then
+  :Select Role to Delete;
+  :Verify Role Deletion;
+  if (Role exists) then (yes)
+    :Delete Role;
+  else (no)
+    :Show Error Message;
+  endif
+else if (Admin selects "Modify Role") then
+  :Select Role to Modify;
+  :Modify Role Details;
+else if (Admin selects "View Role") then
+  :Select Role to View;
+  :Retrieve Role Details;
+  :Display Role Details;
+else if (Admin selects "Add Role-Menu Association") then
+  :Select Role;
+  :Select Menu;
+  :Verify Role-Menu Association;
+  if (Association is valid) then (yes)
+    :Associate Role with Menu;
+  else (no)
+    :Show Error Message;
+  endif
+else if (Admin selects "Delete Role-Menu Association") then
+  :Select Role-Menu Association to Delete;
+  :Verify Role-Menu Association;
+  if (Association exists) then (yes)
+    :Delete Role-Menu Association;
+  else (no)
+    :Show Error Message;
+  endif
+else if (Admin selects "Add Role") then
+  :Enter Role Details;
+  if (Validate Role Details) then (valid)
+    :Create Role;
+  else (invalid)
+    :Show Error Message;
+  endif
+endif
+stop
+@enduml

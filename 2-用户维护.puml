@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+actor Administrator as admin
+actor SuperAdministrator as super_admin
+
+rectangle "User Maintenance" {
+  admin --> (Add User)
+  admin --> (Delete User)
+  admin --> (Modify User)
+  admin --> (View User)
+  admin --> (Add User-Role Association)
+  admin --> (Delete User-Role Association)
+  super_admin --> (Add User)
+  super_admin --> (Delete User)
+  super_admin --> (Modify User)
+  super_admin --> (View User)
+  super_admin --> (Add User-Role Association)
+  super_admin --> (Delete User-Role Association)
+}
+@enduml

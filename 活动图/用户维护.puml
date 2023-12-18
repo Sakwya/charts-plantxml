@@ -1,0 +1,51 @@
+@startuml
+start
+:Enter User Details;
+if (Validate User Details) then (valid)
+  :Create User;
+else (invalid)
+  :Show Error Message;
+  stop
+endif
+if (Admin selects "Delete User") then
+  :Select User to Delete;
+  :Verify User Deletion;
+  if (User exists) then (yes)
+    :Delete User;
+  else (no)
+    :Show Error Message;
+  endif
+else if (Admin selects "Modify User") then
+  :Select User to Modify;
+  :Modify User Details;
+else if (Admin selects "View User") then
+  :Select User to View;
+  :Retrieve User Details;
+  :Display User Details;
+else if (Admin selects "Add User-Role Association") then
+  :Select User;
+  :Select Role;
+  :Verify User-Role Association;
+  if (Association is valid) then (yes)
+    :Associate User with Role;
+  else (no)
+    :Show Error Message;
+  endif
+else if (Admin selects "Delete User-Role Association") then
+  :Select User-Role Association to Delete;
+  :Verify User-Role Association;
+  if (Association exists) then (yes)
+    :Delete User-Role Association;
+  else (no)
+    :Show Error Message;
+  endif
+else if (Admin selects "Add User") then
+  :Enter User Details;
+  if (Validate User Details) then (valid)
+    :Create User;
+  else (invalid)
+    :Show Error Message;
+  endif
+endif
+stop
+@enduml

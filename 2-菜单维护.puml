@@ -1,0 +1,11 @@
+@startuml
+left to right direction
+actor SuperAdministrator as super_admin
+
+rectangle "Menu Maintenance" {
+  super_admin --> (Add Menu)
+  super_admin --> (Delete Menu)
+  super_admin --> (Modify Menu)
+  super_admin --> (View Menu)
+}
+@enduml

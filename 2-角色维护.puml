@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+actor Administrator as admin
+actor SuperAdministrator as super_admin
+
+rectangle "Role Maintenance" {
+  admin --> (Add Role)
+  admin --> (Delete Role)
+  admin --> (Modify Role)
+  admin --> (View Role)
+  admin --> (Add Role-Menu Association)
+  admin --> (Delete Role-Menu Association)
+  super_admin --> (Add Role)
+  super_admin --> (Delete Role)
+  super_admin --> (Modify Role)
+  super_admin --> (View Role)
+  super_admin --> (Add Role-Menu Association)
+  super_admin --> (Delete Role-Menu Association)
+}
+@enduml
