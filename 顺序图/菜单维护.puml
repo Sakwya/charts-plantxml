@@ -1,0 +1,25 @@
+@startuml
+actor SuperAdmin
+participant "Menu Management System" as System
+activate SuperAdmin
+activate System
+SuperAdmin -> System: Enter Menu Details
+System -> System: Validate Menu Details
+alt valid details
+  System -> System: Create Menu
+else invalid details
+  System -> SuperAdmin: Show Error Message
+end
+SuperAdmin -> System: Select Menu to Delete
+System -> System: Verify Menu Deletion
+alt menu exists
+  System -> System: Delete Menu
+else menu does not exist
+  System -> SuperAdmin: Show Error Message
+end
+SuperAdmin -> System: Select Menu to Modify
+System -> System: Modify Menu Details
+SuperAdmin -> System: Select Menu to View
+System -> System: Retrieve Menu Details
+System -> SuperAdmin: Display Menu Details
+@enduml

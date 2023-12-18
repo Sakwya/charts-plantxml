@@ -1,0 +1,40 @@
+@startuml
+actor Admin
+participant "User Management System" as System
+activate Admin
+activate System
+Admin -> System: Enter User Details
+System -> System: Validate User Details
+alt valid details
+  System -> System: Create User
+else invalid details
+  System -> Admin: Show Error Message
+end
+Admin -> System: Select User to Delete
+System -> System: Verify User Deletion
+alt user exists
+  System -> System: Delete User
+else user does not exist
+  System -> Admin: Show Error Message
+end
+Admin -> System: Select User to Modify
+System -> System: Modify User Details
+Admin -> System: Select User to View
+System -> System: Retrieve User Details
+System -> Admin: Display User Details
+Admin -> System: Select User
+Admin -> System: Select Role
+System -> System: Verify User-Role Association
+alt association is valid
+  System -> System: Associate User with Role
+else association is not valid
+  System -> Admin: Show Error Message
+end
+Admin -> System: Select User-Role Association to Delete
+System -> System: Verify User-Role Association
+alt association exists
+  System -> System: Delete User-Role Association
+else association does not exist
+  System -> Admin: Show Error Message
+end
+@enduml

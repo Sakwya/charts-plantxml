@@ -1,0 +1,40 @@
+@startuml
+actor Admin
+participant "Role Management System" as System
+activate Admin
+activate System
+Admin -> System: Enter Role Details
+System -> System: Validate Role Details
+alt valid details
+  System -> System: Create Role
+else invalid details
+  System -> Admin: Show Error Message
+end
+Admin -> System: Select Role to Delete
+System -> System: Verify Role Deletion
+alt role exists
+  System -> System: Delete Role
+else role does not exist
+  System -> Admin: Show Error Message
+end
+Admin -> System: Select Role to Modify
+System -> System: Modify Role Details
+Admin -> System: Select Role to View
+System -> System: Retrieve Role Details
+System -> Admin: Display Role Details
+Admin -> System: Select Role
+Admin -> System: Select Menu
+System -> System: Verify Role-Menu Association
+alt association is valid
+  System -> System: Associate Role with Menu
+else association is not valid
+  System -> Admin: Show Error Message
+end
+Admin -> System: Select Role-Menu Association to Delete
+System -> System: Verify Role-Menu Association
+alt association exists
+  System -> System: Delete Role-Menu Association
+else association does not exist
+  System -> Admin: Show Error Message
+end
+@enduml

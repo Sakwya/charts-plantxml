@@ -1,9 +1,11 @@
 @startuml
 package "sakwya.Jwork" {
     class JworkApplication
-    class CorsConfig
-    class JacksonConfig
-    class ShiroConfig
+    package "config"{
+        class CorsConfig
+        class JacksonConfig
+        class ShiroConfig
+    }
 
     package "controller" {
         class LoginController
@@ -29,14 +31,13 @@ package "sakwya.Jwork" {
         class UserRoleMapper
     }
 
-    package "realm" {
-        class Realm
-    }
-
     package "service" {
         class MenuService
         class RoleService
         class UserService
+    }
+    package "realm" {
+        class Realm
     }
 
     JworkApplication --> CorsConfig
@@ -47,9 +48,6 @@ package "sakwya.Jwork" {
     MenuController --> MenuService
     RoleController --> RoleService
     UserController --> UserService
-
-    Role --> RoleMenu
-    User --> UserRole
 
     MenuService --> MenuMapper
     RoleService --> RoleMapper
